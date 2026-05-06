@@ -1,0 +1,78 @@
+<aside class="sidebar sidebar--menu" [class.sidebar--collapsed]="isCollapsed">
+  <div class="container">
+    <div class="sidebar__menu-header">
+      <button class="sidebar__toggle" (click)="toggleSidebar()">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+
+    <div class="sidebar__logo">
+      <h2 class="sidebar__logo-text">T.Movie</h2>
+    </div>
+
+    <h4><span>Menu</span></h4>
+
+    <ul class="sidebar__list">
+      <li class="sidebar__item">
+        <a href="#" class="sidebar__link">
+          <span class="material-symbols-outlined sidebar__icon">workspace_premium</span>
+          Discover
+        </a>
+      </li>
+      <li class="sidebar__item">
+        <a href="#" class="sidebar__link">
+          <span class="material-symbols-outlined sidebar__icon">list</span>
+          Watchlist
+        </a>
+      </li>
+      <li class="sidebar__item">
+        <a href="#" class="sidebar__link">
+          <span class="material-symbols-outlined sidebar__icon">article_person</span>
+          Blog
+        </a>
+      </li>
+      <li class="sidebar__item">
+        <a href="#" class="sidebar__link">
+          <span class="material-symbols-outlined sidebar__icon">group</span>
+          Artists
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar__divider"></div>
+
+    <ul class="sidebar__list">
+      <li class="sidebar__item">
+        <a href="#" class="sidebar__link">
+          <span class="material-symbols-outlined sidebar__icon">call</span>
+          Contact us
+        </a>
+      </li>
+      <li class="sidebar__item">
+        <a href="#" class="sidebar__link">
+          <span class="material-symbols-outlined sidebar__icon">help</span>
+          Help Center
+        </a>
+      </li>
+      <li class="sidebar__item">
+        <a href="#" class="sidebar__link">
+          <span class="material-symbols-outlined sidebar__icon">settings</span>
+          Settings
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar__subscribe">
+      <p class="sidebar__subscribe-text">Click the button below to see the plans</p>
+      <button class="sidebar__subscribe-btn">
+        <span class="material-symbols-outlined sidebar__icon">workspace_premium</span>
+        see plans
+      </button>
+    </div>
+  </div>
+</aside>
+
+<div class="page-center">
+  <app-header />
+  <router-outlet />
+</div>

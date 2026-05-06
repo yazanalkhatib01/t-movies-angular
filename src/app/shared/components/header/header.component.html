@@ -1,0 +1,38 @@
+<header class="header">
+  <div class="container">
+    <nav class="header__nav">
+      <ul class="header__menu">
+        <li class="header__item"><a href="#">All</a></li>
+        <li class="header__item"><a href="#">Movie</a></li>
+        <li class="header__item"><a href="#">Series</a></li>
+        <li class="header__item header__dropdown">
+          <a href="#">
+            Genres
+            <span class="material-symbols-outlined header__arrow">expand_more</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="header__right">
+      <div class="header__search">
+        <span class="material-symbols-outlined header__search-icon">search</span>
+        <input
+          type="text"
+          placeholder="Search the series, movies ..."
+          class="header__search-input"
+        />
+        <span class="material-symbols-outlined header__filter-icon">tune</span>
+      </div>
+
+      <button class="header__notif-btn">
+        <span class="material-symbols-outlined">notifications</span>
+        <span class="header__notif-dot"></span>
+      </button>
+
+      <div class="header__profile">
+        <img [src]="profileImg" alt="User Profile" />
+      </div>
+    </div>
+  </div>
+</header>

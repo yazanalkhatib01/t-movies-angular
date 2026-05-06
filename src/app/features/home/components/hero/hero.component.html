@@ -1,0 +1,39 @@
+<section class="hero-layout">
+  @if (currentMovie) {
+    <div class="hero" [class.hero--fade]="isAnimating">
+      <div class="hero__background">
+        <img [src]="getImage(currentMovie.backdrop_path)" [alt]="currentMovie.title" />
+      </div>
+
+      <div class="hero__content">
+        <h1 class="hero__title">{{ currentMovie.title }}</h1>
+
+        <div class="hero__meta">
+          <span class="hero__imdb">
+            <span class="hero__imdb-logo">IMDb</span>
+            {{ currentMovie.vote_average.toFixed(1) }}
+          </span>
+          <span>{{ getGenres() }}</span>
+        </div>
+
+        <p class="hero__desc">{{ currentMovie.overview }}</p>
+
+        <div class="hero__buttons">
+          <button class="btn btn--primary">WATCH</button>
+          <button class="btn btn--outline">Trailer</button>
+        </div>
+      </div>
+
+      <div class="hero__arrows">
+        <button class="hero__arrow" (click)="navigate(-1)">
+          <span class="material-symbols-outlined">chevron_left</span>
+        </button>
+        <button class="hero__arrow" (click)="navigate(1)">
+          <span class="material-symbols-outlined">chevron_right</span>
+        </button>
+      </div>
+    </div>
+  }
+
+  <app-hot-news />
+</section>
