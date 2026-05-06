@@ -21,6 +21,7 @@
           type="text"
           placeholder="Search the series, movies ..."
           class="header__search-input"
+          (keyup.enter)="onSearch($event)"
         />
         <span class="material-symbols-outlined header__filter-icon">tune</span>
       </div>
@@ -31,7 +32,7 @@
       </button>
 
       <div class="header__profile">
-        <img [src]="profileImg" alt="User Profile" />
+        <img [src]="profileImg()" alt="User Profile" />
       </div>
     </div>
   </div>

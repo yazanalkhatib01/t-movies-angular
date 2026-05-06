@@ -1,0 +1,74 @@
+@if (movie()) {
+  <div class="detail">
+    <!-- Backdrop -->
+    <div class="detail__backdrop">
+      <img [src]="getBackdrop()" [alt]="movie().title" />
+      <div class="detail__backdrop-overlay"></div>
+    </div>
+
+    <!-- Back Button -->
+    <button class="detail__back" (click)="goBack()">
+      <span class="material-symbols-outlined">arrow_back</span>
+      Back
+    </button>
+
+    <!-- Content -->
+    <div class="detail__content">
+      <!-- Poster -->
+      <div class="detail__poster">
+        <img [src]="getPoster()" [alt]="movie().title" />
+      </div>
+
+      <!-- Info -->
+      <div class="detail__info">
+        <h1 class="detail__title">{{ movie().title }}</h1>
+
+        <div class="detail__meta">
+          <span class="hero__imdb">
+            <span class="hero__imdb-logo">IMDb</span>
+            {{ movie().vote_average.toFixed(1) }}
+          </span>
+          <span>{{ movie().release_date | date: 'yyyy' }}</span>
+          <span>{{ movie().runtime }} min</span>
+          @for (genre of movie().genres; track genre.id) {
+            <span class="detail__genre">{{ genre.name }}</span>
+          }
+        </div>
+
+        <p class="detail__overview">{{ movie().overview }}</p>
+
+        <div class="hero__buttons">
+          <button class="btn btn--primary">
+            <span class="material-symbols-outlined">play_arrow</span>
+            WATCH
+          </button>
+          <button class="btn btn--outline">Trailer</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cast -->
+    @if (credits().length > 0) {
+      <div class="detail__section">
+        <h2 class="section__title">Cast</h2>
+        <div class="detail__cast">
+          @for (actor of credits(); track actor.id) {
+            <div class="detail__cast-card">
+              <img [src]="getProfileImg(actor.profile_path)" [alt]="actor.name" />
+              <p class="detail__cast-name">{{ actor.name }}</p>
+              <p class="detail__cast-char">{{ actor.character }}</p>
+            </div>
+          }
+        </div>
+      </div>
+    }
+
+    <!-- Similar -->
+    @if (similar().length > 0) {
+      <div class="detail__section">
+        <h2 class="section__title">Similar Movies</h2>
+        <app-movies-grid [movies]="similar()" />
+      </div>
+    }
+  </div>
+}

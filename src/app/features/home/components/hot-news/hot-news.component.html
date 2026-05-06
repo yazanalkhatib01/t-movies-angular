@@ -1,25 +1,41 @@
 <aside class="sidebar-news">
   <div class="hotnews-sidebar__card">
-    <div class="hotnews-sidebar__image">
-      <img src="assets/images/hotnews.jpg" alt="Hot News" />
-    </div>
-
-    <div class="hotnews-sidebar__content">
-      <div class="hotnews-sidebar__title">
-        <span class="material-symbols-outlined hotnews-sidebar__icon"> local_fire_department </span>
-        <h3>Hot News</h3>
+    @if (currentNews()) {
+      <div class="hotnews-sidebar__image">
+        <img [src]="currentNews()!.image" [alt]="currentNews()!.title" />
       </div>
 
-      <p class="hotnews-sidebar__text">
-        "Slow Horses," the popular spy drama, has been renewed for a fifth season, much to the
-        delight of its dedicated fanbase. The highly anticipated fourth season is set to premiere on
-        September 4, 2024, promising more thrilling storylines and complex characters.
-      </p>
-    </div>
+      <div class="hotnews-sidebar__content">
+        <div class="hotnews-sidebar__title">
+          <span class="material-symbols-outlined hotnews-sidebar__icon">
+            local_fire_department
+          </span>
+          <h3>Hot News</h3>
+        </div>
 
-    <div class="hotnews-sidebar__footer">
-      <span class="hotnews-sidebar__date">25 July</span>
-      <span class="hotnews-sidebar__count">1/6</span>
-    </div>
+        <p class="hotnews-sidebar__text">{{ currentNews()!.overview | slice: 0 : 180 }}...</p>
+      </div>
+
+      <div class="hotnews-sidebar__footer">
+        <span class="hotnews-sidebar__date">{{ currentNews()!.date }}</span>
+        <div style="display: flex; gap: 8px; align-items: center">
+          <button
+            (click)="prev()"
+            style="background: none; color: var(--color-primary); cursor: pointer; font-size: 18px"
+          >
+            ‹
+          </button>
+          <span class="hotnews-sidebar__count"
+            >{{ currentIndex() + 1 }}/{{ newsList().length }}</span
+          >
+          <button
+            (click)="next()"
+            style="background: none; color: var(--color-primary); cursor: pointer; font-size: 18px"
+          >
+            ›
+          </button>
+        </div>
+      </div>
+    }
   </div>
 </aside>

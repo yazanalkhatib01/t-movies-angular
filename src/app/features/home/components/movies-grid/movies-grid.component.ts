@@ -1,4 +1,4 @@
-import { Component, Input, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, input, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Movie } from '../../../../core/models/movie.model';
 import { MovieCardComponent } from '../../../../shared/components/movie-card/movie-card.component';
@@ -11,7 +11,8 @@ import { MovieCardComponent } from '../../../../shared/components/movie-card/mov
   styleUrl: './movies-grid.component.css',
 })
 export class MoviesGridComponent implements AfterViewInit {
-  @Input() movies: Movie[] = [];
+  movies = input<Movie[]>([]);
+
   @ViewChild('grid') gridRef!: ElementRef<HTMLDivElement>;
 
   private isDown = false;

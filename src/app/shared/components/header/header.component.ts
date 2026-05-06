@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,11 +9,13 @@ import { CommonModule } from '@angular/common';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
-export class HeaderComponent implements OnInit {
-  profileImg = '';
+export class HeaderComponent {
+  private router = inject(Router);
 
-  ngOnInit(): void {
-    const randomId = Math.floor(Math.random() * 70) + 1;
-    this.profileImg = `https://i.pravatar.cc/150?img=${randomId}`;
+  profileImg = signal(`https://i.pravatar.cc/150?img=${Math.floor(Math.random() * 70) + 1}`);
+
+  onSearch(event: Event): void {
+    const q = (event.target as HTMLInputElement).value.trim();
+    if (q) this.router.navigate(['/search'], { queryParams: { q } });
   }
 }

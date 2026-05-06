@@ -1,10 +1,10 @@
-<div class="movie-card">
+<div class="movie-card" (click)="navigateToDetail()">
   <div class="movie-card__image">
-    <img [src]="getImage()" [alt]="movie.title" />
+    <img [src]="getImage()" [alt]="movie().title || movie().name" />
 
     <button
       class="movie-card__favorite"
-      [class.movie-card__favorite--active]="isFavorite"
+      [class.movie-card__favorite--active]="isFavorite()"
       (click)="toggleFavorite($event)"
     >
       <span class="material-symbols-outlined">favorite</span>
@@ -12,11 +12,11 @@
 
     <div class="movie-card__rating">
       <span class="material-symbols-outlined">star</span>
-      {{ movie.vote_average.toFixed(1) }}
+      {{ movie().vote_average.toFixed(1) }}
     </div>
   </div>
 
   <div class="movie-card__info">
-    <h3 class="movie-card__title">{{ movie.title || movie.name }}</h3>
+    <h3 class="movie-card__title">{{ movie().title || movie().name }}</h3>
   </div>
 </div>

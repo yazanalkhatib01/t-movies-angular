@@ -1,15 +1,17 @@
-<app-hero [movies]="heroMovies" [genresMap]="genresMap" />
+<app-hero [movies]="heroMovies()" [genresMap]="heroGenresMap()" />
 
 <section class="section section--recommended">
   <div class="container">
     <div class="section__header">
       <h2 class="section__title">Recommended For You</h2>
-      <a href="#" class="section__link">
-        View All
+      <a href="#" class="section__link"
+        >View All
         <span class="material-symbols-outlined">arrow_forward</span>
       </a>
     </div>
-    <app-movies-grid [movies]="recommendedMovies" />
+    @if (recommendedMovies().length > 0) {
+      <app-movies-grid [movies]="recommendedMovies()" />
+    }
   </div>
 </section>
 
@@ -17,16 +19,17 @@
   <div class="container">
     <div class="section__header">
       <h2 class="section__title">Trending Movies</h2>
-      <a href="#" class="section__link">
-        View All
+      <a href="#" class="section__link"
+        >View All
         <span class="material-symbols-outlined">arrow_forward</span>
       </a>
     </div>
-    <app-movies-grid [movies]="trendingMovies" />
+    @if (trendingMovies().length > 0) {
+      <app-movies-grid [movies]="trendingMovies()" />
+    }
   </div>
 </section>
 
-<!-- Triple Banner 1 -->
 <section class="section section--triple-banner">
   <div class="container">
     <div class="banner banner--card-A">
@@ -35,28 +38,25 @@
         <h2 class="banner__title">NAME MOVE</h2>
         <span class="banner__subtitle">Historical, Drama, Action</span>
         <button class="btn btn--top">
-          <span class="material-symbols-outlined">play_arrow</span>
-          Watch now
+          <span class="material-symbols-outlined">play_arrow</span>Watch now
         </button>
       </div>
     </div>
     <div class="banner banner--card-B">
-      <img src="assets/images/wolverine.jpg" alt="The Sympathizer" class="banner__img" />
+      <img src="assets/images/wolverine.jpg" alt="Wolverine" class="banner__img" />
       <div class="banner__content">
         <button class="btn btn--top">
-          <span class="material-symbols-outlined">play_arrow</span>
-          Watch now
+          <span class="material-symbols-outlined">play_arrow</span>Watch now
         </button>
         <h2 class="banner__title">NAME MOVE</h2>
         <span class="banner__subtitle">Historical, Drama, Action</span>
       </div>
     </div>
     <div class="banner banner--card-C">
-      <img src="assets/images/the_naked_gun.jpg" alt="Small_Light" class="banner__img" />
+      <img src="assets/images/the_naked_gun.jpg" alt="Naked Gun" class="banner__img" />
       <div class="banner__content banner__content--right">
         <button class="btn btn--top">
-          <span class="material-symbols-outlined">play_arrow</span>
-          Watch now
+          <span class="material-symbols-outlined">play_arrow</span>Watch now
         </button>
         <h2 class="banner__title">NAME MOVE</h2>
         <span class="banner__subtitle">Historical, Drama, Action</span>
@@ -65,78 +65,74 @@
   </div>
 </section>
 
-<!-- Genres -->
 <section class="section section--genres">
   <div class="container">
     <div class="section__header">
       <h2 class="section__title">Genres</h2>
-      <a href="#" class="section__link">
-        View All
+      <a href="#" class="section__link"
+        >View All
         <span class="material-symbols-outlined">arrow_forward</span>
       </a>
     </div>
-
     <div class="genres__tabs">
-      @for (genre of genresList; track genre.id) {
+      @for (genre of genresList(); track genre.id) {
         <button
           class="genres__tab"
-          [class.genres__tab--active]="activeGenreId === genre.id"
+          [class.genres__tab--active]="activeGenreId() === genre.id"
           (click)="selectGenre(genre)"
         >
           {{ genre.name }}
         </button>
       }
     </div>
-
-    <app-movies-grid [movies]="genreMovies" />
+    @if (genreMovies().length > 0) {
+      <app-movies-grid [movies]="genreMovies()" />
+    }
   </div>
 </section>
 
-<!-- Trending Series -->
 <section class="section section--trending-series">
   <div class="container">
     <div class="section__header">
       <h2 class="section__title">Trending Series</h2>
-      <a href="#" class="section__link">
-        View All
+      <a href="#" class="section__link"
+        >View All
         <span class="material-symbols-outlined">arrow_forward</span>
       </a>
     </div>
-    <app-movies-grid [movies]="trendingSeries" />
+    @if (trendingSeries().length > 0) {
+      <app-movies-grid [movies]="trendingSeries()" />
+    }
   </div>
 </section>
 
-<!-- Triple Banner 2 -->
 <section class="section section--triple-banner">
   <div class="container">
     <div class="banner banner--card-A">
-      <img src="assets/images/captain_america.jpg" alt="Shogun" class="banner__img" />
+      <img src="assets/images/captain_america.jpg" alt="Captain America" class="banner__img" />
       <div class="banner__content">
         <h2 class="banner__title">NAME MOVE</h2>
         <span class="banner__subtitle">Historical, Drama, Action</span>
         <button class="btn btn--top">
-          <span class="material-symbols-outlined">play_arrow</span>
-          Watch now
+          <span class="material-symbols-outlined">play_arrow</span>Watch now
         </button>
       </div>
     </div>
     <div class="banner banner--card-B">
-      <img src="assets/images/batman_night_snow.jpg" alt="The Sympathizer" class="banner__img" />
+      <img src="assets/images/batman_night_snow.jpg" alt="Batman" class="banner__img" />
       <div class="banner__content">
         <button class="btn btn--top">
-          <span class="material-symbols-outlined">play_arrow</span>
-          Watch now
+          <span class="material-symbols-outlined">play_arrow</span>Watch now
         </button>
         <h2 class="banner__title">NAME MOVE</h2>
         <span class="banner__subtitle">Historical, Drama, Action</span>
       </div>
     </div>
     <div class="banner banner--card-C">
-      <img src="assets/images/superman.jpg" alt="Small_Light" class="banner__img" />
+      <img src="assets/images/superman.jpg" alt="Superman" class="banner__img" />
       <div class="banner__content banner__content--right">
         <button class="btn btn--top">
-          <span class="material-symbols-outlined">play_arrow</span>
-          Watch now
+          <span class="material-symbols-outlined">play_arrow</span>Watch now
         </button>
         <h2 class="banner__title">NAME MOVE</h2>
         <span class="banner__subtitle">Historical, Drama, Action</span>
@@ -145,65 +141,63 @@
   </div>
 </section>
 
-<!-- IMDB Top Movies -->
 <section class="section section--imdb-movies">
   <div class="container">
     <div class="section__header">
       <h2 class="section__title">IMDB Top Movies</h2>
-      <a href="#" class="section__link">
-        View All
+      <a href="#" class="section__link"
+        >View All
         <span class="material-symbols-outlined">arrow_right_alt</span>
       </a>
     </div>
-    <app-movies-grid [movies]="imdbMovies" />
+    @if (imdbMovies().length > 0) {
+      <app-movies-grid [movies]="imdbMovies()" />
+    }
   </div>
 </section>
 
-<!-- IMDB Top Series -->
 <section class="section section--imdb-series">
   <div class="container">
     <div class="section__header">
       <h2 class="section__title">IMDB Top Series</h2>
-      <a href="#" class="section__link">
-        View All
+      <a href="#" class="section__link"
+        >View All
         <span class="material-symbols-outlined">arrow_right_alt</span>
       </a>
     </div>
-    <app-movies-grid [movies]="imdbSeries" />
+    @if (imdbSeries().length > 0) {
+      <app-movies-grid [movies]="imdbSeries()" />
+    }
   </div>
 </section>
 
-<!-- Triple Banner 3 -->
 <section class="section section--triple-banner">
   <div class="container">
     <div class="banner banner--card-A">
-      <img src="assets/images/the_joker.jpg" alt="Shogun" class="banner__img" />
+      <img src="assets/images/the_joker.jpg" alt="Joker" class="banner__img" />
       <div class="banner__content">
         <h2 class="banner__title">NAME MOVE</h2>
         <span class="banner__subtitle">Historical, Drama, Action</span>
         <button class="btn btn--top">
-          <span class="material-symbols-outlined">play_arrow</span>
-          Watch now
+          <span class="material-symbols-outlined">play_arrow</span>Watch now
         </button>
       </div>
     </div>
     <div class="banner banner--card-B">
-      <img src="assets/images/warcraft_.jpg" alt="The Sympathizer" class="banner__img" />
+      <img src="assets/images/warcraft_.jpg" alt="Warcraft" class="banner__img" />
       <div class="banner__content">
         <button class="btn btn--top">
-          <span class="material-symbols-outlined">play_arrow</span>
-          Watch now
+          <span class="material-symbols-outlined">play_arrow</span>Watch now
         </button>
         <h2 class="banner__title">NAME MOVE</h2>
         <span class="banner__subtitle">Historical, Drama, Action</span>
       </div>
     </div>
     <div class="banner banner--card-C">
-      <img src="assets/images/tony_stark.jpg" alt="Small_Light" class="banner__img" />
+      <img src="assets/images/tony_stark.jpg" alt="Tony Stark" class="banner__img" />
       <div class="banner__content banner__content--right">
         <button class="btn btn--top">
-          <span class="material-symbols-outlined">play_arrow</span>
-          Watch now
+          <span class="material-symbols-outlined">play_arrow</span>Watch now
         </button>
         <h2 class="banner__title">NAME MOVE</h2>
         <span class="banner__subtitle">Historical, Drama, Action</span>
@@ -212,30 +206,32 @@
   </div>
 </section>
 
-<!-- Trending TV Shows -->
 <section class="section section--trending-tv-shows">
   <div class="container">
     <div class="section__header">
       <h2 class="section__title">Trending TV Shows</h2>
-      <a href="#" class="section__link">
-        View All
+      <a href="#" class="section__link"
+        >View All
         <span class="material-symbols-outlined">arrow_right_alt</span>
       </a>
     </div>
-    <app-movies-grid [movies]="trendingTvShows" />
+    @if (trendingTvShows().length > 0) {
+      <app-movies-grid [movies]="trendingTvShows()" />
+    }
   </div>
 </section>
 
-<!-- My Watchlist -->
 <section class="section section--my-watchlist">
   <div class="container">
     <div class="section__header">
       <h2 class="section__title">My Watchlist</h2>
-      <a href="#" class="section__link">
-        View All
+      <a href="#" class="section__link"
+        >View All
         <span class="material-symbols-outlined">arrow_right_alt</span>
       </a>
     </div>
-    <app-movies-grid [movies]="watchlist" />
+    @if (watchlist().length > 0) {
+      <app-movies-grid [movies]="watchlist()" />
+    }
   </div>
 </section>

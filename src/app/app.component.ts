@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './shared/components/header/header.component';
 
@@ -10,9 +10,9 @@ import { HeaderComponent } from './shared/components/header/header.component';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  isCollapsed = false;
+  isCollapsed = signal(false);
 
   toggleSidebar(): void {
-    this.isCollapsed = !this.isCollapsed;
+    this.isCollapsed.update((v) => !v);
   }
 }
