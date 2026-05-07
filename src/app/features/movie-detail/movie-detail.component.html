@@ -1,25 +1,20 @@
 @if (movie()) {
   <div class="detail">
-    <!-- Backdrop -->
     <div class="detail__backdrop">
       <img [src]="getBackdrop()" [alt]="movie().title" />
       <div class="detail__backdrop-overlay"></div>
     </div>
 
-    <!-- Back Button -->
     <button class="detail__back" (click)="goBack()">
       <span class="material-symbols-outlined">arrow_back</span>
       Back
     </button>
 
-    <!-- Content -->
     <div class="detail__content">
-      <!-- Poster -->
       <div class="detail__poster">
         <img [src]="getPoster()" [alt]="movie().title" />
       </div>
 
-      <!-- Info -->
       <div class="detail__info">
         <h1 class="detail__title">{{ movie().title }}</h1>
 
@@ -47,7 +42,6 @@
       </div>
     </div>
 
-    <!-- Cast -->
     @if (credits().length > 0) {
       <div class="detail__section">
         <h2 class="section__title">Cast</h2>
@@ -63,7 +57,6 @@
       </div>
     }
 
-    <!-- Similar -->
     @if (similar().length > 0) {
       <div class="detail__section">
         <h2 class="section__title">Similar Movies</h2>

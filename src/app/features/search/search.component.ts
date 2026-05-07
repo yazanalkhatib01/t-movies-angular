@@ -41,10 +41,12 @@ export class SearchComponent {
       .pipe(
         debounceTime(400),
         distinctUntilChanged(),
+
         switchMap((q) => {
           this.loading.set(true);
           return this.tmdb.searchMovies(q);
         }),
+
         takeUntilDestroyed(this.destroyRef),
       )
       .subscribe((res) => {
