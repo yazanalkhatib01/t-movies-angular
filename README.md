@@ -26,7 +26,7 @@ A modern movie discovery app built with **Angular 21**, powered by the TMDB API.
 
 ---
 
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 src/app/
